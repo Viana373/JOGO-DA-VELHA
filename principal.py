@@ -52,4 +52,23 @@ while opcao != "4":
         print("Até a próxima jogatina!")
         print("==========================")
 
+        if opcao == "1":
+         nova_partida = "S"
 
+        # =====  OPCAAO: JOGAR NOVAMENTE =====
+        # Este while repete a partida sem reiniciar o programa.
+        while nova_partida == "S":
+            for i in range(3):
+                for j in range(3):
+                    tabuleiro[i][j] = " "
+
+            marca = "X"       # o X sempre começa
+            fim = False       # vira True quando alguém vence ou dá empate
+            venceu = False    # vira True se o jogador da vez completar uma linha, coluna ou diagonal
+            rodada = 0        # conta as jogadas feitas nesta partida
+            encerrar = False  # vira True depois de mostrar o tabuleiro final
+
+            # ===== SEQUÊNCIA DA PARTIDA =====
+            # Cada volta mostra o tabuleiro e, se a partida não acabou, faz uma jogada.
+            # Na última volta (fim = True) só mostra o tabuleiro final e encerra o laço.
+            while not encerrar:
