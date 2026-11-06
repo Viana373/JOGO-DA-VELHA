@@ -142,3 +142,6 @@ while opcao != "4":
                             print("Essa casa já está ocupada. Escolha outra.")
                         else:
                             acao_valida = True
+                # =====  MARCA A AÇÃO  =====
+                    tabuleiro[linha][coluna] = marca
+                    rodada = rodada + 1
