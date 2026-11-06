@@ -8,6 +8,10 @@ jogador_2 = ""
 
 # MENU INTERATIVO 
 
+
+tabuleiro = [[" ", " ", " "],
+             [" ", " ", " "],
+             [" ", " ", " "]]
 while opcao != "4":
     print("")
     print("============== MENU ==============")
@@ -72,3 +76,33 @@ while opcao != "4":
             # Cada volta mostra o tabuleiro e, se a partida não acabou, faz uma jogada.
             # Na última volta (fim = True) só mostra o tabuleiro final e encerra o laço.
             while not encerrar:
+
+             # ===== TABULEIRO NA TELA =====
+                print("")
+                if fim:
+                    print("-------- Tabuleiro final --------")
+                else:
+                    print(f"------------ Rodada {rodada + 1} ------------")
+                print("      1   2   3")
+                print("    +---+---+---+")
+
+                for i in range(3):
+                    if i == 0:
+                        letras = "A"
+                    elif i == 1:
+                        letras = "B"
+                    else:
+                        letras = "C"
+                    desenho = f"  {letras} |"
+                    for j in range(3):
+                        desenho = f"{desenho} {tabuleiro[i][j]} |"
+                    print(desenho)
+                    print("    +---+---+---+")
+
+                if fim:
+                    encerrar = True
+                else:
+                    if marca == "X":
+                        jogador = jogador_1
+                    else:
+                        jogador = jogador_2
