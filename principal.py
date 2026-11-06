@@ -106,3 +106,39 @@ while opcao != "4":
                         jogador = jogador_1
                     else:
                         jogador = jogador_2
+                    # =====LEITURA E VALIDAÇÃO DA JOGADA 
+                    # O while repete a leitura até a jogada ser válida.
+                    acao_valida = False
+                    while not acao_valida:
+                        acao = input(f"{jogador} ({marca}), escolha a casa (ex.: B2): ")
+
+                        # for aninhado que procura a jogada digitada entre as 9 casas:
+                        # o for de fora (i) percorre as linhas e define a letra (A, B ou C);
+                        # o for de dentro (j) percorre as colunas e monta o texto da casa,
+                        # por exemplo "B" + "2" = "B2". Se a entrada for igual ao texto
+                        # de alguma casa, guardamos a linha e a coluna dela.
+                        linha = -1         # -1 significa "ainda não achou a casa"
+                        coluna = -1
+                        for i in range(3):
+                            if i == 0:
+                                maiuscula = "A"
+                                minuscula = "a"
+                            elif i == 1:
+                                maiuscula = "B"
+                                minuscula = "b"
+                            else:
+                                maiuscula = "C"
+                                minuscula = "c"
+                            for j in range(3):
+                                if acao == maiuscula + str(j + 1) or acao == minuscula + str(j + 1):
+                                    linha = i
+                                    coluna = j
+
+                        if acao == "":
+                            print("Você não digitou nada. Digite uma letra (A a C) e um número (1 a 3).")
+                        elif linha == -1:
+                            print("Jogada inválida. Digite a linha (A a C) e a coluna (1 a 3), ex.: B2.")
+                        elif tabuleiro[linha][coluna] != " ":
+                            print("Essa casa já está ocupada. Escolha outra.")
+                        else:
+                            acao_valida = True
